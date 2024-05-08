@@ -65,7 +65,7 @@ public class BorrowDAOImpl implements BorrowDAO{
         statement.setInt(1, newBorrow.getStudentID());
         statement.setInt(2, newBorrow.getBookID());
         statement.setInt(3, newBorrow.getQuantity());
-        statement.setDate(4, newBorrow.getBorrowDate());
+        statement.setDate(4, new java.sql.Date(newBorrow.getBorrowDate().getTime()));
 
         boolean rowInserted = statement.executeUpdate() > 0;
         statement.close();
@@ -84,7 +84,7 @@ public class BorrowDAOImpl implements BorrowDAO{
         statement.setInt(1, borrow.getStudentID());
         statement.setInt(2, borrow.getBookID());
         statement.setInt(3, borrow.getQuantity());
-        statement.setDate(4, borrow.getBorrowDate());
+        statement.setDate(4, new java.sql.Date(borrow.getBorrowDate().getTime()));
         statement.setInt(5, borrow.getBookID());
 
         boolean rowUpdated = statement.executeUpdate() > 0;

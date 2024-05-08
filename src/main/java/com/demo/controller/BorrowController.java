@@ -90,16 +90,15 @@ public class BorrowController extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String borrowDateStr = request.getParameter("borrowDate");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date borrowDate = null;
+        Date utilBorrowDate = null;
 
         try {
-            java.util.Date utilDate = dateFormat.parse(borrowDateStr);
-            borrowDate = new java.sql.Date(utilDate.getTime());
+            utilBorrowDate = dateFormat.parse(borrowDateStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        BorrowDTO newBorrow = new BorrowDTO(studentID, bookID, quantity, borrowDate);
+        BorrowDTO newBorrow = new BorrowDTO(studentID, bookID, quantity, utilBorrowDate);
         this.borrowService.addNewBorrow(newBorrow);
         response.sendRedirect("borrow");
     }

@@ -9,11 +9,14 @@ public class BorrowDTO {
     private int quantity;
     private Date borrowDate;
 
-    public BorrowDTO(int studentID, int bookID, int quantity, Date date) {}
+    public BorrowDTO(int studentID, int bookID, int quantity, Date borrowDate) {
+        this.studentID = studentID;
+        this.bookID = bookID;
+        this.quantity = quantity;
+        this.borrowDate = borrowDate;
+    }
 
     public BorrowDTO() {}
-
-    public BorrowDTO(int studentID, int bookID, int quantity) {}
 
     public int getBorrowID() {
         return borrowID;
@@ -46,9 +49,6 @@ public class BorrowDTO {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public void setBorrowDate(Date borrowDate) {
-        this.borrowDate = borrowDate;
-    }
 
     public BorrowDTO(int borrowID, int studentID, int bookID, int quantity, Date borrowDate) {
         super();
@@ -59,7 +59,11 @@ public class BorrowDTO {
         this.borrowDate = borrowDate;
     }
 
-    public java.sql.Date getBorrowDate() {
-        return null;
+    public Date getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
     }
 }
