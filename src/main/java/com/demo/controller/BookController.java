@@ -70,6 +70,7 @@ public class BookController extends HttpServlet {
         String name = request.getParameter("Name");
         int totalPage = Integer.parseInt(request.getParameter("TotalPage"));
         int quantity = Integer.parseInt(request.getParameter("Quantity"));
+
         BookDTO newBook = new BookDTO(name,totalPage,quantity);
         this.bookService.addNewBook(newBook);
         response.sendRedirect("book");
@@ -84,7 +85,7 @@ public class BookController extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int bookID = Integer.parseInt(request.getParameter("BookID"));
+        int bookID = Integer.parseInt(request.getParameter("bookID"));
         BookDTO existingBook = this.bookService.getBookById(bookID);
         RequestDispatcher dispatcher = request.getRequestDispatcher("editBookForm.jsp");
         request.setAttribute("book", existingBook);
@@ -92,10 +93,15 @@ public class BookController extends HttpServlet {
     }
 
     private void updateBook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int bookID = Integer.parseInt(request.getParameter("BookID"));
-        String name = request.getParameter("Name");
-        int totalPage = Integer.parseInt(request.getParameter("TotalPage"));
-        int quantity = Integer.parseInt(request.getParameter("Quantity"));
+        System.out.println("check data base");
+        int bookID = Integer.parseInt(request.getParameter("bookID"));
+        System.out.println(bookID );
+        String name = request.getParameter("name");
+        System.out.println(name );
+        int totalPage = Integer.parseInt(request.getParameter("totalPage"));
+        System.out.println(totalPage);
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        System.out.println(quantity);
         BookDTO updatedBook = new BookDTO(bookID, name, totalPage, quantity);
         this.bookService.updateBook(updatedBook);
         response.sendRedirect("book");
