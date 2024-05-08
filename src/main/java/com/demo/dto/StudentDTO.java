@@ -6,6 +6,8 @@ public class StudentDTO {
     private int age;
     private boolean gender;
 
+    public StudentDTO() {}
+
     public int getStudentID() {
         return studentID;
     }

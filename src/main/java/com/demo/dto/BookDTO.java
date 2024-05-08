@@ -6,13 +6,12 @@ public class BookDTO {
     private int totalPage;
     private int quantity;
 
-    public int getBookID() {
-        return bookID;
+    public BookDTO() {
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
-    }
+    public int getBookID() { return bookID; }
+
+    public void setBookID(int bookID) { this.bookID = bookID; }
 
     public String getName() {
         return name;
