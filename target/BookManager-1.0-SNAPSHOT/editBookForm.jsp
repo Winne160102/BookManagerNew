@@ -5,13 +5,24 @@
 </head>
 <body>
 <h2>Edit Book</h2>
-<form action="book?action=update" method="post">
-    Name: <input type="text" name="name" value="${book.name}"><br>
-    Total Pages: <input type="text" name="totalPage" value="${book.totalPage}"><br>
-    Quantity: <input type="text" name="quantity" value="${book.quantity}"><br>
-    <input type="hidden" name="action" value="update">
-    <input type="hidden" name="bookID" value="${book.bookID}">
-    <input type="submit" value="Update Book">
-</form>
+<div class="container mt-4">
+    <form id="bookForm" action="book?action=update" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="Name" value="${book.name}">
+        </div>
+        <div class="form-group">
+            <label for="totalPage">Total Pages:</label>
+            <input type="number" class="form-control" id="totalPage" name="TotalPage" value="${book.totalPage}">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="Quantity" value="${book.quantity}">
+        </div>
+        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="bookID" value="${book.bookID}">
+        <button type="submit" class="btn btn-primary">Update Book</button>
+    </form>
+</div>
 </body>
 </html>

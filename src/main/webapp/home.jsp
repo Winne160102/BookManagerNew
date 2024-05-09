@@ -20,7 +20,9 @@
         <li class="nav-item">
             <a class="nav-link" href="borrow">Borrows</a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="searchBorrow.jsp">Search</a>
+        </li>
     </ul>
 </div>
 </body>

@@ -48,4 +48,9 @@ public class BorrowServiceImpl implements BorrowService{
     public BorrowDTO getBorrowById(int borrowID) throws SQLException {
         return this.borrowDAO.getBorrowById(borrowID);
     }
+
+    @Override
+    public List<BorrowDTO> searchBorrow(String keyword) throws SQLException {
+        return borrowDAO.searchBorrow(keyword);
+    }
 }

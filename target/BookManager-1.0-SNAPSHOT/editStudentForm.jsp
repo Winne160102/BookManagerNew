@@ -1,22 +1,34 @@
-<%@include file="home.jsp"%>
+<%@ include file="home.jsp" %>
 <html>
 <head>
   <title>Edit Student</title>
 </head>
 <body>
 <h2>Edit Student</h2>
-<form action="student?action=update" method="post">
-  <input type="number" class="form-control" id="studentID" name="StudentID" value="<%= request.getParameter("studentID") %>" readonly>
-  Name: <input type="text" id="name" name="Name" value="${student.name}"><br>
-  Age: <input type="text" id="age" name="Age" value="${student.age}"><br>
-  Gender:
-  <input type="radio" name="Gender" value="true" <c:if test="${student.gender}"></c:if>>Male
-  <input type="radio" name="Gender" value="false" <c:if test="${!student.gender}"></c:if>>Female
-
-  <div>
+<div class="container mt-4">
+  <form id="studentForm" action="student?action=update" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="Name" value="${student.name}">
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="text" class="form-control" id="age" name="Age" value="${student.age}">
+    </div>
+    <div class="form-group">
+      <label>Gender:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="male" name="Gender" value="true" <c:if test="${student.gender}">checked</c:if>>
+        <label class="form-check-label" for="male">Male</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="female" name="Gender" value="false" <c:if test="${!student.gender}">checked</c:if>>
+        <label class="form-check-label" for="female">Female</label>
+      </div>
+    </div>
     <input type="hidden" name="action" value="update">
-    <input type="submit" value="Update Student">
-  </div>
-</form>
+    <button type="submit" class="btn btn-primary">Update Student</button>
+  </form>
+</div>
 </body>
 </html>

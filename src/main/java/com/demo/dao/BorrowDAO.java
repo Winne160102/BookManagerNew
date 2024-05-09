@@ -14,4 +14,5 @@ public interface BorrowDAO {
     boolean updateBorrow(BorrowDTO borrow) throws SQLException;
     boolean deleteBorrow(BorrowDTO borrow)throws SQLException;
     BorrowDTO getBorrowById(int borrowID) throws SQLException;
+    List<BorrowDTO> searchBorrow(String keyword) throws SQLException;
 }

@@ -1,10 +1,7 @@
 package com.demo.service;
 
 import com.demo.dto.BorrowDTO;
-import com.demo.dto.StudentDTO;
-
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public interface BorrowService {
@@ -13,4 +10,5 @@ public interface BorrowService {
     boolean updateBorrow(BorrowDTO borrow) throws SQLException;
     boolean deleteBorrow(BorrowDTO borrow)throws SQLException;
     BorrowDTO getBorrowById(int id) throws SQLException;
+    List<BorrowDTO> searchBorrow(String keyword) throws SQLException;
 }

@@ -52,6 +52,9 @@ public class BorrowController extends HttpServlet {
                 case "add":
                     addNewBorrow(request,response);
                     break;
+                case "search":
+                    searchBorrow(request, response);
+                    break;
                 default:
                     getListBorrow(request, response);
                     break;
@@ -101,5 +104,13 @@ public class BorrowController extends HttpServlet {
         BorrowDTO newBorrow = new BorrowDTO(studentID, bookID, quantity, utilBorrowDate);
         this.borrowService.addNewBorrow(newBorrow);
         response.sendRedirect("borrow");
+    }
+
+    private void searchBorrow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String keyword = request.getParameter("keyword");
+        List<BorrowDTO> searchResult = this.borrowService.searchBorrow(keyword);
+        request.setAttribute("searchResult", searchResult);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("searchBorrow.jsp");
+        dispatcher.forward(request, response);
     }
 }

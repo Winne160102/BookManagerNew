@@ -127,4 +127,28 @@ public class BorrowDAOImpl implements BorrowDAO{
         statement.close();
         return borrow;
     }
+
+    @Override
+    public List<BorrowDTO> searchBorrow(String keyword) throws SQLException {
+        List<BorrowDTO> resultList = new ArrayList<>();
+        String sql = "SELECT * FROM borrows WHERE StudentID LIKE ? OR BookID LIKE ? OR Quantity LIKE ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+            statement.setString(3, "%" + keyword + "%");
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int borrowID = resultSet.getInt("BorrowID");
+                    int studentID = resultSet.getInt("StudentID");
+                    int bookID = resultSet.getInt("BookID");
+                    int quantity = resultSet.getInt("Quantity");
+                    Date borrowDate = resultSet.getDate("BorrowDate");
+                    BorrowDTO borrow = new BorrowDTO(borrowID, studentID, bookID, quantity, borrowDate);
+                    resultList.add(borrow);
+                }
+            }
+        }
+        return resultList;
+    }
 }
